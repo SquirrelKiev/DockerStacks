@@ -7,6 +7,13 @@ services:
       - botdata-onk:/data
     depends_on:
       - postgres
+      
+  dibari-pub:
+    image: ghcr.io/squirrelkiev/dibaribotnew:master
+    volumes:
+      - botdata-pub:/data
+    depends_on:
+      - postgres
 
   postgres:
     image: postgres:latest
@@ -24,4 +31,5 @@ secrets:
     external: true
 volumes:
   botdata-onk:
+  botdata-pub:
   pgdata:
