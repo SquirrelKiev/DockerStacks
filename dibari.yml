@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  dibari-onk:
+    image: ghcr.io/squirrelkiev/dibaribotnew:master
+    volumes:
+      - botdata-onk:/data
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=dibariuser
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
+    secrets:
+      - db_password
+
+secrets:
+  db_password:
+    external: true
+volumes:
+  botdata-onk:
+  pgdata:
