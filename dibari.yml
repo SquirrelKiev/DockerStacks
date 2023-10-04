@@ -7,6 +7,7 @@ services:
       - botdata-onk:/data
     depends_on:
       - postgres
+      - seq
       
   dibari-pub:
     image: ghcr.io/squirrelkiev/dibaribotnew:main
@@ -14,6 +15,7 @@ services:
       - botdata-pub:/data
     depends_on:
       - postgres
+      - seq
 
   postgres:
     image: postgres:latest
@@ -25,6 +27,15 @@ services:
       - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
     secrets:
       - db_password
+      
+  seq:
+    image: datalust/seq:latest
+    environment:
+      - ACCEPT_EULA=Y
+    volumes:
+      - seqdata:/data
+    ports:
+      - "5341:80"
 
 secrets:
   db_password:
@@ -33,3 +44,4 @@ volumes:
   botdata-onk:
   botdata-pub:
   pgdata:
+  seqdata:
