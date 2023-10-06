@@ -17,6 +17,14 @@ services:
       - postgres
       - seq
 
+  dibari-renai:
+    image: ghcr.io/squirrelkiev/dibaribotnew:main
+    volumes:
+      - botdata-renai:/data
+    depends_on:
+      - postgres
+      - seq
+
   postgres:
     image: postgres:latest
     volumes:
@@ -43,5 +51,6 @@ secrets:
 volumes:
   botdata-onk:
   botdata-pub:
+  botdata-renai:
   pgdata:
   seqdata:
