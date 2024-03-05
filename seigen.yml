@@ -5,6 +5,9 @@ services:
     image: ghcr.io/squirrelkiev/seigen:main
     volumes:
       - botdata-onk:/data
+    networks:
+      default:
+      seqnet:
     depends_on:
       - postgres
       - seq
@@ -19,15 +22,6 @@ services:
       - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
     secrets:
       - db_password
-      
-  seq:
-    image: datalust/seq:latest
-    environment:
-      - ACCEPT_EULA=Y
-    volumes:
-      - seqdata:/data
-    ports:
-      - "5341:80"
 
 secrets:
   db_password:
@@ -35,4 +29,7 @@ secrets:
 volumes:
   botdata-onk:
   pgdata:
-  seqdata:
+networks:
+  default:
+  seqnet:
+    external: true
