@@ -8,7 +8,7 @@ services:
     volumes:
       - seqdata:/data
     ports:
-      - "5341:80"
+      - "80:80"
     networks:
       seqnet:
         aliases:
