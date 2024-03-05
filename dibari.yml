@@ -5,6 +5,8 @@ services:
     image: ghcr.io/squirrelkiev/dibaribotnew:main
     volumes:
       - botdata-onk:/data
+    networks:
+      seqnet:
     depends_on:
       - postgres
       - seq
@@ -13,6 +15,8 @@ services:
     image: ghcr.io/squirrelkiev/dibaribotnew:main
     volumes:
       - botdata-pub:/data
+    networks:
+      seqnet:
     depends_on:
       - postgres
       - seq
@@ -21,6 +25,8 @@ services:
     image: ghcr.io/squirrelkiev/dibaribotnew:main
     volumes:
       - botdata-renai:/data
+    networks:
+      seqnet:
     depends_on:
       - postgres
       - seq
@@ -35,15 +41,6 @@ services:
       - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
     secrets:
       - db_password
-      
-  seq:
-    image: datalust/seq:latest
-    environment:
-      - ACCEPT_EULA=Y
-    volumes:
-      - seqdata:/data
-    ports:
-      - "5341:80"
 
 secrets:
   db_password:
@@ -53,4 +50,6 @@ volumes:
   botdata-pub:
   botdata-renai:
   pgdata:
-  seqdata:
+networks:
+  seqnet:
+    external: true
