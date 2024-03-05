@@ -6,6 +6,7 @@ services:
     volumes:
       - botdata-onk:/data
     networks:
+      default:
       seqnet:
     depends_on:
       - postgres
@@ -16,6 +17,7 @@ services:
     volumes:
       - botdata-pub:/data
     networks:
+      default:
       seqnet:
     depends_on:
       - postgres
@@ -26,6 +28,7 @@ services:
     volumes:
       - botdata-renai:/data
     networks:
+      default:
       seqnet:
     depends_on:
       - postgres
@@ -51,5 +54,6 @@ volumes:
   botdata-renai:
   pgdata:
 networks:
+  default:
   seqnet:
     external: true
