@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:      
+  seq:
+    image: datalust/seq:latest
+    environment:
+      - ACCEPT_EULA=Y
+    volumes:
+      - seqdata:/data
+    ports:
+      - "5341:80"
+    networks:
+      seqnet:
+        aliases:
+          - seq
+
+volumes:
+  seqdata:
+    - external: true
+
+networks:
+  seqnet:
+    name: seqnet
+    external: true
