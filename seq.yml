@@ -16,7 +16,7 @@ services:
 
 volumes:
   seqdata:
-    - external: true
+    external: true
 
 networks:
   seqnet:
