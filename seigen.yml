@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   seigen-onk:
-    image: ghcr.io/squirrelkiev/zatsuyou:main
+    image: ghcr.io/squirrelkiev/asahi:main
     volumes:
       - botdata-onk:/data
     networks:
