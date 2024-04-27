@@ -46,6 +46,10 @@ services:
 secrets:
   db_password:
     external: true
+  s3_key_id:
+    external: true
+  s3_app_key:
+    external: true
 volumes:
   botdata-onk:
   pgdata:
