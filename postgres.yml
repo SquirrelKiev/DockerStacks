@@ -26,7 +26,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: laidbackenon@outlook.com
       PGADMIN_DEFAULT_PASSWORD_FILE: /run/secrets/pgadmin_password
     volumes:
-      - pgadmin-data:/var/lib/pgadmin
+      - pgadmindata:/var/lib/pgadmin
     networks:
       frontend:
         aliases:
@@ -39,7 +39,7 @@ secrets:
     external: true
 volumes:
   pgdata:
-  pgadmin:
+  pgadmindata:
 networks:
   frontend:
   seqnet:
