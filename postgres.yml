@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=enonibobble
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
+    secrets:
+      - db_password
+    networks:
+      frontend:
+        aliases:
+          - postgres
+      seqnet:
+        aliases:
+          - postgres
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "8888:8888"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: laidbackenon@outlook.com
+      PGADMIN_DEFAULT_PASSWORD_FILE: /run/secrets/pgadmin_password
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      frontend:
+        aliases:
+          - pgadmin
+
+secrets:
+  db_password:
+    external: true
+  pgadmin_password:
+    external: true
+volumes:
+  pgdata:
+  pgadmin:
+networks:
+  frontend:
+  seqnet:
+    external: true
