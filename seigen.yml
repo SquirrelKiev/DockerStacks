@@ -23,6 +23,29 @@ services:
     secrets:
       - db_password
 
+  dbbackups:
+    image: kartoza/pg-backup:latest
+    environment:
+      - DUMPPREFIX=PG
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USER=botuser
+      - POSTGRES_PASS_FILE=/run/secrets/db_password
+      - STORAGE_BACKEND=S3
+      - ACCESS_KEY_ID_FILE=/run/secrets/s3_key_id
+      - SECRET_ACCESS_KEY_FILE=/run/secrets/s3_app_key
+      - DEFAULT_REGION=us-west-004
+      - BUCKET=seigen-bucket
+      - HOST_BASE=s3.us-west-004.backblazeb2.com
+      - HOST_BUCKET=enon-bot-backup
+      - SSL_SECURE=True
+      #- CRON_SCHEDULE="*/5 * * * *"
+    restart: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+      minio:
+        condition: service_started
+
 secrets:
   db_password:
     external: true
