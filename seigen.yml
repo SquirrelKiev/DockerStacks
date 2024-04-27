@@ -24,7 +24,7 @@ services:
       - db_password
 
   dbbackups:
-    image: kartoza/pg-backup:latest
+    image: kartoza/pg-backup:16-3.4--v2023.11.27
     environment:
       - DUMPPREFIX=PG
       - POSTGRES_HOST=postgres
