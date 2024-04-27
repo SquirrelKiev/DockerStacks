@@ -30,6 +30,7 @@ services:
       - POSTGRES_HOST=postgres
       - POSTGRES_USER=botuser
       - POSTGRES_PASS_FILE=/run/secrets/db_password
+      - DBLIST=postgres
       - STORAGE_BACKEND=S3
       - ACCESS_KEY_ID_FILE=/run/secrets/s3_key_id
       - SECRET_ACCESS_KEY_FILE=/run/secrets/s3_app_key
