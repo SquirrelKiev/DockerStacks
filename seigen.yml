@@ -42,6 +42,10 @@ services:
     restart: on-failure
     depends_on:
       - postgres
+    secrets:
+      - db_password
+      - s3_key_id
+      - s3_app_key
 
 secrets:
   db_password:
