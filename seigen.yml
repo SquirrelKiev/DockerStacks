@@ -41,10 +41,7 @@ services:
       #- CRON_SCHEDULE="*/5 * * * *"
     restart: on-failure
     depends_on:
-      db:
-        condition: service_healthy
-      minio:
-        condition: service_started
+      - postgres
 
 secrets:
   db_password:
