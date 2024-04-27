@@ -45,8 +45,37 @@ services:
     secrets:
       - db_password
 
+  dbbackups:
+    image: kartoza/pg-backup:16-3.4--v2023.11.27
+    environment:
+      - DUMPPREFIX=PG
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USER=dibariuser
+      - POSTGRES_PASS_FILE=/run/secrets/db_password
+      - DBLIST=postgres
+      - STORAGE_BACKEND=S3
+      - ACCESS_KEY_ID_FILE=/run/secrets/s3_key_id
+      - SECRET_ACCESS_KEY_FILE=/run/secrets/s3_app_key
+      - DEFAULT_REGION=us-west-004
+      - BUCKET=dibari-bucket
+      - HOST_BASE=s3.us-west-004.backblazeb2.com
+      - HOST_BUCKET=enon-bot-backup
+      - SSL_SECURE=True
+      #- CRON_SCHEDULE="*/5 * * * *"
+    restart: on-failure
+    depends_on:
+      - postgres
+    secrets:
+      - db_password
+      - s3_key_id
+      - s3_app_key
+
 secrets:
   db_password:
+    external: true
+  s3_key_id:
+    external: true
+  s3_app_key:
     external: true
 volumes:
   botdata-onk:
