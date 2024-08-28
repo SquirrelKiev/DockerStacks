@@ -21,14 +21,14 @@ services:
       - POSTGRES_USER=dibariuser
       - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
     ports:
-      - "5432:5432"
+      - "5432:5433"
     secrets:
       - db_password
 
   dbbackups:
     image: kartoza/pg-backup:16-3.4--v2023.11.27
     environment:
-      - DUMPPREFIX=DIBARIPUB
+      - DUMPPREFIX=DIBARIONK
       - POSTGRES_HOST=postgres
       - POSTGRES_USER=dibariuser
       - POSTGRES_PASS_FILE=/run/secrets/db_password
