@@ -1,17 +1,6 @@
 version: '3.8'
 
 services:
-  dibari-onk:
-    image: ghcr.io/squirrelkiev/dibaribotnew:main
-    volumes:
-      - botdata-onk:/data
-    networks:
-      default:
-      seqnet:
-    depends_on:
-      - postgres
-      - seq
-
   postgres:
     image: postgres:16
     volumes:
