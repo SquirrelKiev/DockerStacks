@@ -11,6 +11,28 @@ services:
     depends_on:
       - postgres
       - seq
+      
+  dibari-pub:
+    image: ghcr.io/squirrelkiev/dibaribotnew:main
+    volumes:
+      - botdata-pub:/data
+    networks:
+      default:
+      seqnet:
+    depends_on:
+      - postgres
+      - seq
+
+  dibari-renai:
+    image: ghcr.io/squirrelkiev/dibaribotnew:main
+    volumes:
+      - botdata-renai:/data
+    networks:
+      default:
+      seqnet:
+    depends_on:
+      - postgres
+      - seq
 
   postgres:
     image: postgres:16
