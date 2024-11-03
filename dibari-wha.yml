@@ -20,8 +20,6 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=dibariuser
       - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
-    ports:
-      - "5434:5432"
     secrets:
       - db_password
 
