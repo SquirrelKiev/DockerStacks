@@ -7,5 +7,11 @@ services:
     restart: always
     volumes:
       - theloungedata:/var/opt/thelounge
+    networks:
+      - irc-net
 volumes:
   theloungedata:
+networks:
+  irc-net:
+    external: true
+    
