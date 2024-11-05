@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  thelounge:
+    image: ghcr.io/thelounge/thelounge:latest
+    ports:
+      - "9100:9100"
+    restart: always
+    volumes:
+      - theloungedata:/var/opt/thelounge
+volumes:
+  theloungedata:
