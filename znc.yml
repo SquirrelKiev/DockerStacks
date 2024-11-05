@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  znc:
+    image: lscr.io/linuxserver/znc:latest
+    ports:
+      - "6501:6501"
+    restart: always
+    volumes:
+      - zncdata:/config
+volumes:
+  zncdata:
