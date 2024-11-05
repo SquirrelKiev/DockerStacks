@@ -7,5 +7,11 @@ services:
     restart: always
     volumes:
       - zncdata:/znc-data
+    networks:
+      - irc-net
 volumes:
   zncdata:
+networks:
+  irc-net:
+    external: true
+    
