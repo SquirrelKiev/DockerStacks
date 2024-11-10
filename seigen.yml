@@ -20,6 +20,8 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=botuser
       - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
+    ports:
+      - 5435:5432
     secrets:
       - db_password
 
