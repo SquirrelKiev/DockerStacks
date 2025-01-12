@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   dibari:
-    image: ghcr.io/squirrelkiev/dibaribotnew:main
+    image: ghcr.io/squirrelkiev/dibaribot:main
     volumes:
       - botdata:/data
     networks:
