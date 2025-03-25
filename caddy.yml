@@ -2,8 +2,9 @@ version: '3.8'
 
 services:
   caddy:
-    build: .
-    dockerfile: Caddy-Dockerfile
+    build:
+      context: .
+      dockerfile: Caddy-Dockerfile
     ports:
       - "80:80"
       - "443:443"
