@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  caddy:
+    image: caddy:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - /home/snoodle/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - irc-net
+
+volumes:
+  caddy_data:
+  caddy_config:
+networks:
+  irc-net:
+    external: true
