@@ -8,7 +8,7 @@ services:
     volumes:
       - seqdata:/data
     ports:
-      - "80:80"
+      - "800:80"
     networks:
       seqnet:
         aliases:
