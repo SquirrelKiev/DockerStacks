@@ -1,8 +1,6 @@
 services:
   caddy:
-    build:
-      context: .
-      dockerfile: Caddy-Dockerfile
+    image: ghcr.io/squirrelkiev/snoodles-caddy:master
     ports:
       - "80:80"
       - "443:443"
